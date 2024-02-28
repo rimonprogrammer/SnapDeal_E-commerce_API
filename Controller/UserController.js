@@ -33,12 +33,11 @@ module.exports.Login = async (req, res, next) =>{
         const {email, password} = req.body;
 
         const user = await UserModel.findOne({email});
-        const passwordCheck = await bcrypt.compare(password, user.password)
-
         if(!user){
             return res.json({msg : 'Email does not match', status : 'false'});
         }
 
+        const passwordCheck = await bcrypt.compare(password, user.password);
         if(!passwordCheck){
             return res.json({msg : 'Password does not match', status : 'false'});
         }
