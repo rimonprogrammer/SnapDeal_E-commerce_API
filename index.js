@@ -36,7 +36,7 @@ const client = new MongoClient(uri, {
 const database = async() => {
   try {
     await client.connect(); 
-    const db = await client.db("ShopZen")
+    const db = await client.db("test")
     const Products = await db.collection('Products');
     
     app.get('/products', async(req, res) =>{
